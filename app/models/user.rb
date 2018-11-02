@@ -4,6 +4,7 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
+  validates :image, length: { maximum: 255 }
   
   has_secure_password
   
@@ -15,6 +16,8 @@ class User < ApplicationRecord
   
   has_many :haves, class_name: 'Have'
   has_many :have_items, through: :haves, class_name: 'Item', source: :item
+  
+  mount_uploader :image, ImageUploader
   
   def want(item)
     self.wants.find_or_create_by(item_id: item.id)

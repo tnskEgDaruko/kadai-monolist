@@ -113,3 +113,8 @@ p.item-title {
 .user-profile .status ul li .status-value {
   font-size: 18px;
 }
+
+.imageuploader {
+  display: inline-block;
+  margin: 0 auto;
+}
